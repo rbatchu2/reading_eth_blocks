@@ -78,12 +78,12 @@ def get_contract_values(contract, admin_address, owner_address):
 	https://testnet.bscscan.com/address/0xaA7CAaDA823300D18D3c43f65569a47e78220073
 	"""
 	default_admin_role = int.to_bytes(0, 32, byteorder="big")
+	
+ 	onchain_root = contract.functions.merkleRoot().call()
+    has_role = contract.functions.hasRole(default_admin_role, admin_address).call()
+    prime = contract.functions.getPrimeByOwner(owner_address).call()
 
-	onchain_root = contract.functions.merkleRoot().call()
-	has_role = contract.functions.hasRole(default_admin_role, admin_address).call()
-	prime = contract.functions.getPrime(owner_address).call()
-
-	return onchain_root, has_role, prime
+    return onchain_root, has_role, prime
 
 
 """
