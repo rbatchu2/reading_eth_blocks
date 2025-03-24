@@ -80,8 +80,7 @@ def get_contract_values(contract, admin_address, owner_address):
 	onchain_root = contract.functions.merkleRoot().call()
 	has_role = contract.functions.hasRole(default_admin_role, admin_address).call()
 	prime = contract.functions.getPrimeByOwner(owner_address).call()
-
-    return onchain_root, has_role, prime
+	return onchain_root, has_role, prime
 
 """
 	This might be useful for testing (main is not run by the grader feel free to change 
